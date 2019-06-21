@@ -1,6 +1,8 @@
 # from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
 FROM php:7.1-fpm
 
+ENV publicDir /usr/local/apache2/htdocs/
+
 # install the PHP extensions we need
 RUN set -ex; \
 	\
@@ -39,3 +41,10 @@ RUN set -ex; \
 	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
 	rm -rf /var/lib/apt/lists/*
+
+WORKDIR ${publicDir}
+
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php \
+        && mv composer.phar /usr/local/bin/ \
+        && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer

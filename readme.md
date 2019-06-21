@@ -7,7 +7,7 @@ a `docker-compose.yml` file to spin up a local environment on Linux, Mac OS X an
 | --------- | ------- | ----- |
 | mariadb   | 10.4    | mariadb:10.4 |
 | phpmyadmin | 4.7    | phpmyadmin/phpmyadmin:4.7 |
-| httpd | 2.4 | httpd:2.4-alpine
+| httpd | 2.4 | httpd:2.4-alpine |
 | php-fpm | 7.1 | php:7.1-fpm |
 
 Currently, we will only support version that Drupal is fully tested.
