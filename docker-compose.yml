@@ -37,7 +37,6 @@ services:
         - php-fpm
         - mariadb
       networks:
-        - frontend
         - backend
       container_name: dd-webserver
       working_dir: /application
@@ -53,9 +52,8 @@ services:
       container_name: dd-php-fpm
       working_dir: /application
       volumes:
-        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
         - ./drupal/:/usr/local/apache2/htdocs/drupal
 
 networks:
-  frontend:
   backend:
