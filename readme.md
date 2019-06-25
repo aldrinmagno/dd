@@ -13,7 +13,6 @@ a `docker-compose.yml` file to spin up a local environment on Linux, Mac OS X an
 Currently, we will only support version that Drupal is fully tested.
 ## How to use
 * locate the `docker-compose.yml` and open your terminal in the same file. Now type `docker-compose up -d`
-* in the same directory type `composer create-project drupal-composer/drupal-project:8.x-dev drupal --stability dev --no-interaction`
 * Open your browser and visit `localhost:8080`
 * Follow the installation guide.
 ### Running docker-compose behind a proxy
