@@ -1,7 +1,14 @@
 # from https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements
-FROM php:7.1-fpm
+FROM php:7.2-fpm
 
 ENV publicDir /usr/local/apache2/htdocs/
+
+#Install git
+RUN apt-get update \
+    && apt-get install -y git
+
+RUN apt-get update \
+    && apt-get install -y unzip
 
 # install the PHP extensions we need
 RUN set -ex; \
@@ -13,7 +20,7 @@ RUN set -ex; \
 	savedAptMark="$(apt-mark showmanual)"; \
 	\
 	apt-get update; \
-	apt-get install -y --no-install-recommends \
+	apt-get install --assume-yes --no-install-recommends \
 		libjpeg-dev \
 		libpng-dev \
 		libpq-dev \
@@ -43,8 +50,11 @@ RUN set -ex; \
 	rm -rf /var/lib/apt/lists/*
 
 WORKDIR ${publicDir}
-
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php \
         && mv composer.phar /usr/local/bin/ \
         && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+
+WORKDIR ${publicDir}
+# install drupal
+RUN composer create-project drupal-composer/drupal-project:8.x-dev drupal1 --stability dev --no-interaction

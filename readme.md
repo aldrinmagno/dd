@@ -16,6 +16,8 @@ Currently, we will only support version that Drupal is fully tested.
 * in the same directory type `composer create-project drupal-composer/drupal-project:8.x-dev drupal --stability dev --no-interaction`
 * Open your browser and visit `localhost:8080`
 * Follow the installation guide.
+### Running docker-compose behind a proxy
+* https://docs.docker.com/network/proxy/
 ## URLs
 * Drupal site: `localhost:8080`
 * phpMyAdmin: `localhost:8083`
